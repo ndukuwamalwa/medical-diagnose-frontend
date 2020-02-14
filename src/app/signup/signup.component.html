@@ -1,0 +1,22 @@
+<main class="center-on-page">
+    <form [formGroup]="form" (ngSubmit)="signup(form)" ngNativeValidate>
+        <h1>Register account</h1>
+        <fieldset>
+            <label for="name">Your name</label>
+            <input type="text" name="name" id="name" required pattern="[a-zA-Z' ]{1,}" formControlName="name">
+        </fieldset>
+        <fieldset>
+            <label for="email">Email address</label>
+            <input type="email" name="email" id="email" required formControlName="email">
+        </fieldset>
+        <fieldset>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required formControlName="password">
+        </fieldset>
+        <p class="error" *ngIf="signUpError">{{signUpError}}</p>
+        <fieldset style="display: block;">
+            <button [disabled]="isLoading" class="primary">Register<app-loader *ngIf="isLoading"></app-loader></button><span style="margin: auto 20px;">OR</span>
+            <a routerLink="/login" title="Login" class="link">Login</a>
+        </fieldset>
+    </form>
+</main>

@@ -1,0 +1,14 @@
+<app-portal>
+    <ng-container class="account-content">
+        <div *ngIf="!isLoading">
+            <article>
+                <span>Patients</span>
+                <span>{{stats?.patients}}</span>
+            </article>
+            <article>
+                <span>Diagnosis</span>
+                <span>{{stats?.diagnostics}}</span>
+            </article>
+        </div>
+    </ng-container>
+</app-portal>

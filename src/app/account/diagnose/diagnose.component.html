@@ -1,0 +1,56 @@
+<app-portal>
+    <ng-container class="account-content">
+        <form [formGroup]="form" (ngSubmit)="diagnose(form)" ngNativeValidate>
+            <h1>Sickness Diagnosis</h1>
+            <fieldset>
+                <label for="year_of_birth">Patient's year of birth</label>
+                <input type="number" name="year_of_birth" id="year_of_birth" required min="1900"
+                    formControlName="year_of_birth">
+            </fieldset>
+            <fieldset>
+                <label for="gender">Gender</label>
+                <div>
+                    <div>
+                        <input type="radio" name="gender" id="male" value="male" required formControlName="gender">
+                        <label for="male">Male</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="gender" id="female" value="female" required formControlName="gender">
+                        <label for="female">Female</label>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <label for="symptoms">Symptoms</label>
+                <select name="symptoms" id="symptoms" required formControlName="symptoms"
+                    (change)="onSelectSymptom($event.target.value)">
+                    <option [value]="s.ID" *ngFor="let s of symptoms">{{s.Name}}</option>
+                </select>
+            </fieldset>
+            <table *ngIf="selectedSymptoms.length > 0">
+                <thead>
+                    <tr>
+                        <th>Symptom</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let s of selectedSymptoms">
+                        <td>{{s.Name}}</td>
+                        <td>
+                            <button (click)="removeSymptom(s)">Remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="info" *ngIf="diagnoseErrror">{{diagnoseErrror}}</p>
+            <fieldset>
+                <button [disabled]="isLoading" class="primary">Diagnose <app-loader *ngIf="isLoading"></app-loader></button>
+            </fieldset>
+        </form>
+        <p class="info" *ngIf="diagnostics && diagnostics.length === 0">No results matched.</p>
+        <div style="display: flex;flex-wrap: wrap;justify-content: center;" *ngIf="diagnostics && diagnostics.length > 0">
+            <app-diagnosis *ngFor="let d of diagnostics" [diagnostic]="d"></app-diagnosis>
+        </div>
+    </ng-container>
+</app-portal>

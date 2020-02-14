@@ -1,0 +1,16 @@
+{
+  "name": "Diagnose Disease",
+  "short_name": "Diagnose Disease",
+  "theme_color": "#1976d2",
+  "background_color": "#fafafa",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "assets/icons/icon-50x50.png",
+      "sizes": "50x50",
+      "type": "image/png"
+    }
+  ]
+}

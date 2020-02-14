@@ -1,0 +1,51 @@
+<table style="max-width: 300px; margin: 10px;min-width: 300px;">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Name</td>
+            <td>{{diagnostic?.Issue.Name}}</td>
+        </tr>
+        <tr>
+            <td>Prof Name</td>
+            <td>{{diagnostic?.Issue.ProfName}}</td>
+        </tr>
+        <tr>
+            <td>ICD</td>
+            <td>{{diagnostic?.Issue.Icd}}</td>
+        </tr>
+        <tr>
+            <td>ICD Name</td>
+            <td>{{diagnostic?.Issue.IcdName}}</td>
+        </tr>
+        <tr>
+            <td>Accuracy</td>
+            <td>{{diagnostic?.Issue.Accuracy}}</td>
+        </tr>
+        <tr *ngIf="diagnostic?.Issue.gender">
+            <td>Patient</td>
+            <td>{{diagnostic?.Issue.gender + ', ' + diagnostic?.Issue.year_of_birth}}</td>
+        </tr>
+        <tr *ngIf="diagnostic?.Issue.symptoms">
+            <td>Symptoms</td>
+            <td>
+                <span *ngFor="let s of getSymptomsNames(diagnostic.Issue.symptoms)">{{s}} <br></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Specialisation</td>
+            <td>{{getSpecialisationNames(diagnostic?.Specialisation)}}</td>
+        </tr>
+        <tr>
+            <td>Validation</td>
+            <td style="display: flex;">
+                <button>Invalidate</button>
+                <button (click)="validate(diagnostic.Issue.ID)" class="primary" *ngIf="diagnostic.Issue.valid === false">Validate</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

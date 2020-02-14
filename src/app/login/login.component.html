@@ -1,0 +1,18 @@
+<main class="center-on-page">
+    <form [formGroup]="form" ngNativeValidate (ngSubmit)="login(form)">
+        <h1>Login to continue</h1>
+        <fieldset>
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" required formControlName="username">
+        </fieldset>
+        <fieldset>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required formControlName="password">
+        </fieldset>
+        <p class="error" *ngIf="loginError">{{loginError}}</p>
+        <fieldset style="display: block;">
+            <button [disabled]="isLoading" class="primary">Login <app-loader *ngIf="isLoading"></app-loader></button><span style="margin: auto 20px;">OR</span>
+            <a routerLink="/signup" title="Register" class="link">Register</a>
+        </fieldset>
+    </form>
+</main>

@@ -1,0 +1,22 @@
+<app-portal>
+    <ng-container class="account-content">
+        <form [formGroup]="form" (ngSubmit)="update(form)" ngNativeValidate>
+            <fieldset>
+                <label for="name">Your name</label>
+                <input type="text" name="name" id="name" required formControlName="name">
+            </fieldset>
+            <fieldset>
+                <label for="email">Email address</label>
+                <input type="email" name="email" id="email" required readonly formControlName="email">
+            </fieldset>
+            <fieldset>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required autocomplete="off" formControlName="password">
+            </fieldset>
+            <p class="error" *ngIf="updateError">{{updateError}}</p>
+            <fieldset>
+                <button [disabled]="isLoading" class="primary">Update <app-loader *ngIf="isLoading"></app-loader></button>
+            </fieldset>
+        </form>
+    </ng-container>
+</app-portal>

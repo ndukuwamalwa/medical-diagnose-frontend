@@ -1,0 +1,24 @@
+<header>
+    <div id="menu-bar" (click)="toggle()">
+        <i class="fa fa-bars" *ngIf="!menuShown"></i>
+        <i class="fa fa-close" *ngIf="menuShown"></i>
+    </div>
+    <div>
+        <img src="assets/clinic.png" alt="Logo">
+    </div>
+    <div>
+        <span>Logged in as: </span>
+        <span style="font-weight: 400;letter-spacing: 1px;">{{user?.name}}</span>
+    </div>
+    <div id="logout">
+        <button (click)="logout()">Logout</button>
+    </div>
+</header>
+<nav id="menu">
+    <a routerLink="/account/diagnose" title="Diagnose" routerLinkActive="active-link">Diagnose</a>
+    <a routerLink="/account/history" title="History" routerLinkActive="active-link">History</a>
+    <a routerLink="/account/bio" title="Your info" routerLinkActive="active-link">Your info</a>
+</nav>
+<main>
+    <ng-content select=".account-content"></ng-content>
+</main>

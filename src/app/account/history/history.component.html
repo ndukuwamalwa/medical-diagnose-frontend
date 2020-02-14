@@ -1,0 +1,23 @@
+<app-portal>
+    <ng-container class="account-content">
+        <form #f="ngForm" (ngSubmit)="viewHistory(f)" ngNativeValidate>
+            <h1>Your activity</h1>
+            <div style="display: flex;">
+                <fieldset>
+                    <label for="startDate">Start Date</label>
+                    <input type="date" name="startDate" id="startDate" required ngModel>
+                </fieldset>
+                <fieldset>
+                    <label for="endDate">End Date</label>
+                    <input type="date" name="endDate" id="endDate" required ngModel>
+                </fieldset>
+            </div>
+            <fieldset>
+                <button class="primary" [disabled]="isLoading">View <app-loader *ngIf="isLoading"></app-loader></button>
+            </fieldset>
+        </form>
+        <div *ngIf="diagnosis" style="display: flex;flex-wrap: wrap;justify-content: center;">
+            <app-diagnosis [diagnostic]="d" *ngFor="let d of diagnosis"></app-diagnosis>
+        </div>
+    </ng-container>
+</app-portal>
