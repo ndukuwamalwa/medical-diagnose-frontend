@@ -37,7 +37,7 @@ export class DiagnosisService {
     return this.http._get(`${this.apiUrl}/symptoms`);
   }
 
-  validate(id: number): Observable<any> {
-    return this.http._put(`${this.apiUrl}/diagnosis/validate`, { id });
+  validate(id: number, valid: boolean): Observable<any> {
+    return this.http._put(`${this.apiUrl}/diagnosis/validate?valid=${valid}`, { id });
   }
 }

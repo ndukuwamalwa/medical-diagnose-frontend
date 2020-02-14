@@ -25,8 +25,8 @@ export class DiagnosisComponent implements OnInit {
     return spec.map(v => v.Name).join(', ');
   }
 
-  validate(id: number) {
-    this.diagnosticService.validate(id)
+  validate(id: number, valid: boolean) {
+    this.diagnosticService.validate(id, valid)
       .subscribe(res => {
         this.diagnostic.Issue.valid = true;
       }, e => {

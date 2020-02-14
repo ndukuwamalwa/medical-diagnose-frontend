@@ -43,8 +43,8 @@
         <tr>
             <td>Validation</td>
             <td style="display: flex;">
-                <button>Invalidate</button>
-                <button (click)="validate(diagnostic.Issue.ID)" class="primary" *ngIf="diagnostic.Issue.valid === false">Validate</button>
+                <button  *ngIf="diagnostic.Issue.valid === true" (click)="validate(diagnostic.Issue.ID, false)">Invalidate</button>
+                <button (click)="validate(diagnostic.Issue.ID, true)" class="primary" *ngIf="diagnostic.Issue.valid === false">Validate</button>
             </td>
         </tr>
     </tbody>
